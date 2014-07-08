@@ -6,25 +6,30 @@
 
     'use strict';
 
-    var oneRepMax = angular.module('oneRepMax', []);
+    var oneRepMax = angular.module('oneRepMax', []).value('appSettings', {
+        MINWEIGHT: 1,
+        MINREPS: 1,
+        MAXREPS: 10
+    });
 
-    var max_controller = function($scope) {
+    var max_controller = function($scope, appSettings) {
         $scope.inputs = {
-            weightLifted: 0,
-            repsDone: 0,
-            maxWeight: 0,
+            weightLifted: ' ',
+            repsDone: ' ',
+            maxWeight: ' ',
             percentages: []
         };
+        $scope.appSettings = appSettings;
 
     //Deep copy of model
     var originalData = angular.copy($scope.inputs);
 
     $scope.calculateMax = function(weight, reps) {
-        if(reps > 10 || reps <= 0) {
+        if(reps > appSettings.MAXREPS || reps < appSettings.MINREPS) {
             alert('Please enter a number of reps between 1 - 10 ');
             return false
         }
-        else if (weight < 0 ) {
+        else if (weight < appSettings.MINWEIGHT ) {
             alert('Please enter a weight greater than 0');
             return false
         }
@@ -53,7 +58,7 @@
     };
 
     //inject $scope service into controller
-    max_controller.$inject = ['$scope'];
+    max_controller.$inject = ['$scope', 'appSettings'];
 
     oneRepMax.controller('max_controller', max_controller);
 
