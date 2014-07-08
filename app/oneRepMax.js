@@ -6,7 +6,7 @@
 
     'use strict';
 
-    var oneRepMax = angular.module('oneRepMax', []).value('appSettings', {
+    var oneRepMax = angular.module('oneRepMax', []).constant('appSettings', {
         MINWEIGHT: 1,
         MINREPS: 1,
         MAXREPS: 10
@@ -19,6 +19,7 @@
             maxWeight: ' ',
             percentages: []
         };
+        //Expose appSettings object to scope
         $scope.appSettings = appSettings;
 
     //Deep copy of model
