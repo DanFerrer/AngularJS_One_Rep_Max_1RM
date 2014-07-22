@@ -12,18 +12,18 @@
 </head>
 <body>
 
-<div ng-cloak ng-controller="max_controller">
-    Weight Lifted: <input type="number" ng-model="inputs.weightLifted">
-    Reps Done: <input ng-model="inputs.repsDone">
-    <button ng-click="calculateMax(inputs.weightLifted, inputs.repsDone)">Calculate</button>
-    <button ng-click="resetInputs()">Reset</button>
-    One Rep Max: {{ inputs.maxWeight }}
+<div ng-cloak ng-controller="MaxController">
+    Weight Lifted: <input ng-model="max.weightLifted">
+    Reps Done: <input ng-model="max.repsDone">
+    <button ng-click="max.calculateMax()">Calculate</button>
+    <!--<button ng-click="max.resetMax()">Reset</button>-->
+    One Rep Max: {{ max.maxWeight }}
     <table>
         <tr>
             <th>Percentage</th>
             <th>Weight</th>
         </tr>
-        <tr ng-repeat="percent in inputs.percentages">
+        <tr ng-repeat="percent in max.percentages">
             <td>{{ percent.name }} 1RM</td>
             <td>{{ percent.weight }}</td>
         </tr>
@@ -31,7 +31,10 @@
 </div>
 
 <script src="../bower_components/angular/angular.js"></script>
-<script src="oneRepMax.js"></script>
+<script src="app.js"></script>
+<script src="MaxController.js"></script>
+<script src="MaxModel.js"></script>
+<script src="MaxService.js"></script>
 
 </body>
 </html>
