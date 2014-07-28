@@ -3,21 +3,15 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Angular 1 Rep Max Calculator</title>
-    <style type="text/css">
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak]
-         {
-            display: none !important;
-        }
-    </style>
 </head>
 <body>
 
-<div ng-cloak ng-controller="MaxController">
+<div ng-controller="MaxController">
     Weight Lifted: <input ng-model="max.weightLifted">
     Reps Done: <input ng-model="max.repsDone">
     <button ng-click="max.calculateMax()">Calculate</button>
     <!--<button ng-click="max.resetMax()">Reset</button>-->
-    One Rep Max: {{ max.maxWeight }}
+    One Rep Max: <span ng-bind="max.maxWeight"></span>
     <table>
         <tr>
             <th>Percentage</th>
