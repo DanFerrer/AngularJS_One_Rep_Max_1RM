@@ -1,30 +1,55 @@
 <!DOCTYPE html>
-<html ng-app="oneRepMax">
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Angular 1 Rep Max Calculator</title>
+<html data-ng-app="oneRepMax">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>AngularJs 1RM</title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
 
-<div ng-controller="MaxController">
-    Weight Lifted: <input ng-model="max.weightLifted">
-    Reps Done: <input ng-model="max.repsDone">
-    <button ng-click="max.calculateMax()">Calculate</button>
-    <!--<button ng-click="max.resetMax()">Reset</button>-->
-    One Rep Max: <span ng-bind="max.maxWeight"></span>
-    <table>
-        <tr>
-            <th>Percentage</th>
-            <th>Weight</th>
-        </tr>
-        <tr ng-repeat="percent in max.percentages">
-            <td>{{ percent.name }} 1RM</td>
-            <td>{{ percent.weight }}</td>
-        </tr>
-    </table>
+<div ng-controller="MaxController as maxController" ng-cloak>
+    <h1 class="page-header text-center">AngularJS One Rep Max Calculator</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div id="weight-group" class="form-group">
+                    <label>Weight Lifted:</label>
+                    <input type="text" name="weight" class="form-control" ng-model="maxController.weightLifted">
+                </div>
+                <div id="reps-group" class="form-group">
+                    <label>Reps Done:</label>
+                    <input type="text" name="reps" class="form-control" ng-model="maxController.repsDone">
+                </div>
+                <button type="button" class="btn btn-lg btn-success text-center" ng-click="maxController.calculate1RM()">Calculate Max!</button>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <h2>Your One Rep Max is: <b>{{ maxController.maxWeight }}!</b></h2>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Percentage</th>
+                        <th>Weight</th>
+                    </tr>
+                    <tr ng-repeat="percent in maxController.percentages">
+                        <td>{{ percent.name }}</td>
+                        <td>{{ percent.weight }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!--app scripts-->
 <script src="app.js"></script>
 <script src="MaxController.js"></script>
 <script src="MaxModel.js"></script>

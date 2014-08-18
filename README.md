@@ -20,7 +20,7 @@ TODOS
 
 - _Add more perctanges_
 
-- _Encapsulate calculations and percentages in services/factories instead of controllers_
+- _Encapsulate calculations and percentages in services/factories instead of controllers_(FINISHED 8/18/2014)
 
 - _WRITE TESTS_
 

@@ -5,15 +5,14 @@
 var MaxModel = function() {
 
     return {
-        weight: 0,
-        reps: 0,
+        weight: '0',
+        reps: '0',
         maxWeight: 0,
-        percentages: [],
-        originalData: angular.copy(MaxModel)
+        percentages: []
     }
 
 };
 
-oneRepMax.factory('MaxModel', MaxModel);
+angular.module('oneRepMax').factory('MaxModel', MaxModel);
 
 
